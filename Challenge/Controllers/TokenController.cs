@@ -56,13 +56,13 @@ namespace Challenge.Controllers
 
             //Payload
             var payload = new JwtPayload
-            {
-               _configuration["Authentication:Issuer"],
-               _configuration["Authenticate:Audience"],
-               Claims,
-               DateTime.Now,
-               DateTime.UtcNow.AddMinutes(2)
-            };
+            (
+                _configuration["Authentication:Issuer"],
+                _configuration["Authentication:Audience"],
+                Claims,
+                DateTime.Now,
+                DateTime.UtcNow.AddMinutes(10)
+            );
 
             var token = new JwtSecurityToken(header, payload);
 
